@@ -159,7 +159,8 @@
 
 	// init scene and camera
 	var scene = new THREE.Scene()
-	var camera	= new THREE.PerspectiveCamera(40, window.innerWidth / window.innerHeight, 0.01, 1000);
+	var camera = new THREE.PerspectiveCamera(40, window.innerWidth / window.innerHeight, 0.01, 1000);
+	scene.add(new THREE.AmbientLight(0x696969));
 	camera.position.z = 2;
 
 	//////////////////////////////////////////////////////////////////////////////////
@@ -191,6 +192,7 @@
 
             var loader = new THREE.ObjectLoader();
             myScene = loader.parse(data);
+
             myScene.traverse(function (child) {
                 if (child instanceof THREE.Mesh) {
                     markerObject3D.add(child)
