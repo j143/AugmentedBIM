@@ -199,6 +199,9 @@
                     markerObject3D.add(child)
                 }
             });
+
+            //make the object invisible
+            markerObject3D.visible = false
                
             });
        
@@ -293,7 +296,7 @@
 		detectMarkersStats.end();
 
 		if( markerToObject3DEnabled === false )	return
-		markerObject3D.visible = false
+		//markerObject3D.visible = false
 
 		// see if this.markerId has been found
 		markers.forEach(function(marker){
