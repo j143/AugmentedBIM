@@ -149,7 +149,8 @@
 	var renderer	= new THREE.WebGLRenderer({
 		antialias	: true,
 		alpha: true,
-		maxLights: 10
+		maxLights: 10,
+        shadowMapEnabled:true
 	});
 	renderer.setSize( window.innerWidth, window.innerHeight );
 	document.body.appendChild( renderer.domElement );
