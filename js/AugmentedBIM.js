@@ -608,14 +608,14 @@
         }
 
         //change height based on # rows
-        BIM.attributes.attributeListDiv.height(rowCounter * 12 + 21);
+        BIM.attributes.attributeListDiv.height(rowCounter * 12 + 43);
 
         //set the width
         if (longestString > 50) {
             BIM.attributes.attributeListDiv.width(longestString * 5 + 43);
         }
         else {
-            BIM.attributes.attributeListDiv.width(200);
+            BIM.attributes.attributeListDiv.width(250);
         }
 
         //Show the html element
