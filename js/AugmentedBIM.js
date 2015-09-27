@@ -111,10 +111,10 @@
             wireframe: true
         });
         var mesh = new THREE.Mesh(geometry, material);
-        markerObject3D.add(mesh);
+        //markerObject3D.add(mesh);
 
         var mesh2 = new THREE.AxisHelper;
-        markerObject3D.add(mesh2);
+        //markerObject3D.add(mesh2);
     })();
 
 
