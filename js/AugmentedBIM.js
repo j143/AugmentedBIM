@@ -125,15 +125,16 @@
     var loader = new THREE.ObjectLoader();
     var myScene = loader.parse(data);
 
-            myScene.traverse(function (child) {
-                if (child instanceof THREE.Mesh) {
+    while (myScene.children.length>0) {
+        var child = myScene.children[0];
+        if (child instanceof THREE.Mesh) {
 
-                    markerObject3D.add(child)
-                    BIM.attributes.elementList.push(child);
+            markerObject3D.add(child)
+            BIM.attributes.elementList.push(child);
 
-                }
-            });
-
+        }
+    }
+           
 
     //////////////////////////////////////////////////////////////////////////////////
     //		render the whole thing on the page
@@ -417,7 +418,7 @@
         mouse3D.normalize();
 
         //Get a list of objects that intersect with the selection vector.  We'll take the first one (the closest)
-        //the BIMacles element list is populated in the BIMacles.jsonLoader.processSceneGeometry function
+        //the Augmented BIM element list is populated in the BIMacles.jsonLoader.processSceneGeometry function
         //which is called every time a scene is loaded
         var raycaster = new THREE.Raycaster(BIM.camera.position, mouse3D);
         var intersects = raycaster.intersectObjects(BIM.attributes.elementList);
