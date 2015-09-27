@@ -1,4 +1,8 @@
-﻿.AugmentedBIM_attributeList {
+﻿body{
+    background-color:black;
+}
+
+.AugmentedBIM_attributeList {
     height: 1px;
     
     background-color: #fafafa;
