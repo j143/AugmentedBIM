@@ -127,12 +127,10 @@
 
             myScene.traverse(function (child) {
                 if (child instanceof THREE.Mesh) {
-<<<<<<< HEAD
+
                     markerObject3D.add(child)
                     BIM.attributes.elementList.push(child);
-=======
-                    markerObject3D.add(child);
->>>>>>> origin/gh-pages
+
                 }
             });
 
@@ -143,13 +141,10 @@
 
     // handle window resize
     window.addEventListener('resize', function () {
-<<<<<<< HEAD
-        renderer.setSize(window.innerWidth, window.innerHeight)
-        camera.aBIM = window.innerWidth / window.innerHeight
-=======
+
         renderer.setSize(window.innerWidth, window.innerHeight);
         camera.aspect = window.innerWidth / window.innerHeight;
->>>>>>> origin/gh-pages
+
         camera.updateProjectionMatrix()
     }, false);
 
@@ -645,7 +640,5 @@
     BIM.createLights(scene);
 
     BIM.attributes.init();
-}
-
 };
 
