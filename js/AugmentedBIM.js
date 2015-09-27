@@ -122,8 +122,10 @@
     //////////////////////////////////////////////////////////////////////////////////
 
     // add some debug display
+
+    //Create a plane of 6x6", which is the size of the marker in reality
     (function () {
-        var geometry = new THREE.PlaneGeometry(1, 1, 10, 10);
+        var geometry = new THREE.PlaneGeometry(6, 6, 10, 10);
         var material = new THREE.MeshBasicMaterial({
             wireframe: true
         });
