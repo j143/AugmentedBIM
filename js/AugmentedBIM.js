@@ -220,73 +220,50 @@
 
 
         //using the bounding sphere calculated above, get a numeric value to position the lights away from the center
-        //var offset = scene.boundingSphere.radius * 2;
+        var offset = scene.boundingSphere.radius * 2;
 
-        ////get the center of the bounding sphere.  we'll use this to center the rig
-        //var center = scene.boundingSphere.center;
-
-
-        ////create a series of pointlights
-
-        ////directly above
-        //var pointA = new THREE.PointLight(0x666666, 1, 0);
-        //pointA.position.set(center.x, center.y + offset, center.z);
-        //pointA.castShadow = false;
-        //scene.add(pointA);
-
-        ////directly below
-        //var pointB = new THREE.PointLight(0x666666, 0.66, 0);
-        //pointB.position.set(center.x, center.y - offset, center.z);
-        //pointB.castShadow = false;
-        //scene.add(pointB);
+        //get the center of the bounding sphere.  we'll use this to center the rig
+        var center = scene.boundingSphere.center;
 
 
+        //create a series of pointlights
 
-        ////4 from the cardinal directions, at roughly 45deg
-        //var pointC = new THREE.PointLight(0x666666, 0.33, 0);
-        //pointC.position.set(center.x + offset, center.y, center.z);
-        //pointC.castShadow = false;
-        //scene.add(pointC);
-
-
-        //var pointD = new THREE.PointLight(0x666666, 0.33, 0);
-        //pointD.position.set(center.x, center.y, center.z + offset);
-        //pointD.castShadow = false;
-        //scene.add(pointD);
-
-
-        //var pointE = new THREE.PointLight(0x666666, 0.33, 0);
-        //pointE.position.set(center.x - offset, center.y, center.z);
-        //pointE.castShadow = false;
-        //scene.add(pointE);
-
-        //var pointF = new THREE.PointLight(0x666666, 0.33, 0);
-        //pointF.position.set(center.x, center.y, center.z - offset);
-        //pointF.castShadow = false;
-        //scene.add(pointF);
-
-        //directional light - the sun
-        //var light = new THREE.DirectionalLight(0xffffff, 1);
-        //light.position.set(center.x + offset, center.y + offset, center.z + offset);
-        //light.target.position.set(center.x, center.y, center.z);
-        ////light.castShadow = true;
-        //light.shadowCameraNear = 1;
-        //light.shadowCameraFar = offset * 2.5;
-        //light.shadowCameraTop = offset * 1.2;
-        //light.shadowCameraRight = offset * 1.2;
-        //light.shadowCameraBottom = offset * -1.2;
-        //light.shadowCameraLeft = offset * -1.2;
-        //light.distance = 0;
-        //light.intensity = 0;
-        //light.shadowBias = 0.001;
-        ////light.shadowMapHeight = SPECT.viewerDiv.innerHeight();
-        ////light.shadowMapWidth = SPECT.viewerDiv.innerWidth();
-        //light.shadowDarkness = 0.65;
-        ////light.shadowCameraVisible = true;
-
-        //add the light to our scene and to our app object
-
-        //scene.add(light);
+//        //directly above
+//        var pointA = new THREE.PointLight(0x666666, 1, 0);
+//        pointA.position.set(center.x, center.y + offset, center.z);
+//        pointA.castShadow = false;
+//        scene.add(pointA);
+//
+//        //directly below
+//        var pointB = new THREE.PointLight(0x666666, 0.66, 0);
+//        pointB.position.set(center.x, center.y - offset, center.z);
+//        pointB.castShadow = false;
+//        scene.add(pointB);
+//
+//
+//
+//        //4 from the cardinal directions, at roughly 45deg
+//        var pointC = new THREE.PointLight(0x666666, 0.33, 0);
+//        pointC.position.set(center.x + offset, center.y, center.z);
+//        pointC.castShadow = false;
+//        scene.add(pointC);
+//
+//
+//        var pointD = new THREE.PointLight(0x666666, 0.33, 0);
+//        pointD.position.set(center.x, center.y, center.z + offset);
+//        pointD.castShadow = false;
+//        scene.add(pointD);
+//
+//
+//        var pointE = new THREE.PointLight(0x666666, 0.33, 0);
+//        pointE.position.set(center.x - offset, center.y, center.z);
+//        pointE.castShadow = false;
+//        scene.add(pointE);
+//
+//        var pointF = new THREE.PointLight(0x666666, 0.33, 0);
+//        pointF.position.set(center.x, center.y, center.z - offset);
+//        pointF.castShadow = false;
+//        scene.add(pointF);
     };
 
 
@@ -294,4 +271,8 @@
 
     BIM.computeBoundSphere(scene);
     BIM.createLights(scene);
+
+    //expose properties for debugging and outside access
+    BIM.scene = scene;
+    BIM.camera = camera;
 };
