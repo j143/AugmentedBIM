@@ -56,17 +56,17 @@
     //////////////////////////////////////////////////////////////////////////////////
     var detectMarkersStats = new Stats();
     detectMarkersStats.setMode(1);
-    $('body').get(0).appendChild(detectMarkersStats.domElement);
-    detectMarkersStats.domElement.style.position = 'absolute';
-    detectMarkersStats.domElement.style.bottom = '0px';
-    detectMarkersStats.domElement.style.right = '0px';
+    //$('body').get(0).appendChild(detectMarkersStats.domElement);
+    //detectMarkersStats.domElement.style.position = 'absolute';
+    //detectMarkersStats.domElement.style.bottom = '0px';
+    //detectMarkersStats.domElement.style.right = '0px';
 
     var renderStats = new Stats();
     renderStats.setMode(0);
-    $('body').get(0).appendChild(renderStats.domElement);
-    renderStats.domElement.style.position = 'absolute';
-    renderStats.domElement.style.bottom = '0px';
-    renderStats.domElement.style.left = '0px';
+    //$('body').get(0).appendChild(renderStats.domElement);
+    //renderStats.domElement.style.position = 'absolute';
+    //renderStats.domElement.style.bottom = '0px';
+    //renderStats.domElement.style.left = '0px';
 
     
 
@@ -150,7 +150,7 @@
     }, false);
 
 
-    // render the scene
+     //render the scene
     onRenderFcts.push(function () {
         renderStats.begin();
         if (webglRenderEnabled === true) {
