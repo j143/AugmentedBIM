@@ -5,29 +5,29 @@
     //////////////////////////////////////////////////////////////////////////////////
     //		Test if the browser support WebGL and getUserMedia
     //////////////////////////////////////////////////////////////////////////////////
-    ; (function () {
+    (function () {
         // TODO backport those 2 in Detector.js
-        var hasGetUserMedia = (navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia) ? true : false
+        var hasGetUserMedia = (navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia) ? true : false;
         var hasMediaStreamTrackSources = MediaStreamTrack.getSources ? true : false
-        var hasWebGL = (function () { try { var canvas = document.createElement('canvas'); return !!(window.WebGLRenderingContext && (canvas.getContext('webgl') || canvas.getContext('experimental-webgl'))); } catch (e) { return false; } })()
+        var hasWebGL = (function () { try { var canvas = document.createElement('canvas'); return !!(window.WebGLRenderingContext && (canvas.getContext('webgl') || canvas.getContext('experimental-webgl'))); } catch (e) { return false; } })();
 
         if (hasWebGL === false) {
-            alert('your browser doesn\'t support navigator.getUserMedia()')
+            alert('your browser doesn\'t support navigator.getUserMedia()');
         }
         if (hasMediaStreamTrackSources === false) {
-            alert('your browser doesn\'t support MediaStreamTrack.getSources()')
+            alert('your browser doesn\'t support MediaStreamTrack.getSources()');
         }
         if (hasGetUserMedia === false) {
-            alert('your browser doesn\'t support navigator.getUserMedia()')
+            alert('your browser doesn\'t support navigator.getUserMedia()');
         }
-    })()
+    })();
 
     //////////////////////////////////////////////////////////////////////////////////
     //		enabled/disable various parts
     //////////////////////////////////////////////////////////////////////////////////
-    var detectMarkersEnabled = true
-    var markerToObject3DEnabled = true
-    var webglRenderEnabled = true
+    var detectMarkersEnabled = true;
+    var markerToObject3DEnabled = true;
+    var webglRenderEnabled = true;
 
 
     //////////////////////////////////////////////////////////////////////////////////
@@ -36,16 +36,16 @@
     var detectMarkersStats = new Stats();
     detectMarkersStats.setMode(1);
     $('body').get(0).appendChild(detectMarkersStats.domElement);
-    detectMarkersStats.domElement.style.position = 'absolute'
-    detectMarkersStats.domElement.style.bottom = '0px'
-    detectMarkersStats.domElement.style.right = '0px'
+    detectMarkersStats.domElement.style.position = 'absolute';
+    detectMarkersStats.domElement.style.bottom = '0px';
+    detectMarkersStats.domElement.style.right = '0px';
 
     var renderStats = new Stats();
     renderStats.setMode(0);
     $('body').get(0).appendChild(renderStats.domElement);
-    renderStats.domElement.style.position = 'absolute'
-    renderStats.domElement.style.bottom = '0px'
-    renderStats.domElement.style.left = '0px'
+    renderStats.domElement.style.position = 'absolute';
+    renderStats.domElement.style.bottom = '0px';
+    renderStats.domElement.style.left = '0px';
 
     
 
@@ -75,25 +75,25 @@
     //////////////////////////////////////////////////////////////////////////////////
     //		create a markerObject3D
     //////////////////////////////////////////////////////////////////////////////////
-    var markerObject3D = new THREE.Object3D()
-    scene.add(markerObject3D)
+    var markerObject3D = new THREE.Object3D();
+    scene.add(markerObject3D);
 
     //////////////////////////////////////////////////////////////////////////////////
     //		add an object in the markerObject3D
     //////////////////////////////////////////////////////////////////////////////////
 
     // add some debug display
-    ; (function () {
-        var geometry = new THREE.PlaneGeometry(1, 1, 10, 10)
+    (function () {
+        var geometry = new THREE.PlaneGeometry(1, 1, 10, 10);
         var material = new THREE.MeshBasicMaterial({
             wireframe: true
-        })
+        });
         var mesh = new THREE.Mesh(geometry, material);
         markerObject3D.add(mesh);
 
-        var mesh = new THREE.AxisHelper
-        markerObject3D.add(mesh);
-    })()
+        var mesh2 = new THREE.AxisHelper;
+        markerObject3D.add(mesh2);
+    })();
 
 
     //////////////////////////////////////////////////////////////////////////////////
@@ -105,7 +105,7 @@
 
             myScene.traverse(function (child) {
                 if (child instanceof THREE.Mesh) {
-                    markerObject3D.add(child)
+                    markerObject3D.add(child);
                 }
             });
 
@@ -116,10 +116,10 @@
 
     // handle window resize
     window.addEventListener('resize', function () {
-        renderer.setSize(window.innerWidth, window.innerHeight)
-        camera.aspect = window.innerWidth / window.innerHeight
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        camera.aspect = window.innerWidth / window.innerHeight;
         camera.updateProjectionMatrix()
-    }, false)
+    }, false);
 
 
     // render the scene
@@ -129,20 +129,20 @@
             renderer.render(scene, camera);
         }
         renderStats.end();
-    })
+    });
 
     // run the rendering loop
-    var previousTime = performance.now()
+    var previousTime = performance.now();
     requestAnimationFrame(function animate(now) {
 
         requestAnimationFrame(animate);
 
         onRenderFcts.forEach(function (onRenderFct) {
             onRenderFct(now, now - previousTime)
-        })
+        });
 
         previousTime = now
-    })
+    });
 
     //////////////////////////////////////////////////////////////////////////////////
     //		Do the Augmented Reality part
@@ -150,52 +150,52 @@
 
 
     // init the marker recognition
-    var jsArucoMarker = new THREEx.JsArucoMarker()
+    var jsArucoMarker = new THREEx.JsArucoMarker();
 
     // if no specific image source is specified, take the webcam by default
-    if (location.hash === '') location.hash = '#webcam'
+    if (location.hash === '') location.hash = '#webcam';
 
     // init the image source grabbing
     if (location.hash === '#video') {
-        var videoGrabbing = new THREEx.VideoGrabbing()
+        var videoGrabbing = new THREEx.VideoGrabbing();
         jsArucoMarker.videoScaleDown = 2
     } else if (location.hash === '#webcam') {
-        var videoGrabbing = new THREEx.WebcamGrabbing()
+        var videoGrabbing = new THREEx.WebcamGrabbing();
         jsArucoMarker.videoScaleDown = 2
     } else if (location.hash === '#image') {
-        var videoGrabbing = new THREEx.ImageGrabbing()
+        var videoGrabbing = new THREEx.ImageGrabbing();
         jsArucoMarker.videoScaleDown = 10
-    } else console.assert(false)
+    } else console.assert(false);
 
     // attach the videoGrabbing.domElement to the body
-    document.body.appendChild(videoGrabbing.domElement)
+    document.body.appendChild(videoGrabbing.domElement);
 
     //////////////////////////////////////////////////////////////////////////////////
     //		Process video source to find markers
     //////////////////////////////////////////////////////////////////////////////////
     // set the markerObject3D as visible
-    markerObject3D.visible = false
+    markerObject3D.visible = false;
     // process the image source with the marker recognition
     onRenderFcts.push(function () {
-        if (detectMarkersEnabled === false) return
+        if (detectMarkersEnabled === false) return;
 
-        var domElement = videoGrabbing.domElement
+        var domElement = videoGrabbing.domElement;
         detectMarkersStats.begin();
-        var markers = jsArucoMarker.detectMarkers(domElement)
+        var markers = jsArucoMarker.detectMarkers(domElement);
         detectMarkersStats.end();
 
-        if (markerToObject3DEnabled === false) return
-        markerObject3D.visible = false
+        if (markerToObject3DEnabled === false) return;
+        markerObject3D.visible = false;
 
         // see if this.markerId has been found
         markers.forEach(function (marker) {
             // if( marker.id !== 265 )	return
 
-            jsArucoMarker.markerToObject3D(marker, markerObject3D)
+            jsArucoMarker.markerToObject3D(marker, markerObject3D);
 
             markerObject3D.visible = true
         })
-    })
+    });
 
 
     //////////////////////////////////////////////////////////////////////////////////
@@ -213,7 +213,7 @@
         //expand the scope of the bounding sphere
         scene.boundingSphere = {};
         scene.boundingSphere = geo.boundingSphere;
-    }
+    };
     BIM.createLights = function (scene) {
         var ambientLight = new THREE.AmbientLight(0x696969);
         scene.add(ambientLight);
@@ -287,11 +287,11 @@
         //add the light to our scene and to our app object
 
         //scene.add(light);
-    }
+    };
 
 
 
 
     BIM.computeBoundSphere(scene);
     BIM.createLights(scene);
-}
+};
