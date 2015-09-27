@@ -21,7 +21,24 @@
 
 
 
+    //////////////////////////////////////////////////////////////////////////////////
+    //		Logo
+    //////////////////////////////////////////////////////////////////////////////////
+    //Append a div to the parent for us to populate with attributes.  handle any jquery.ui initialization here too
+    $('body').append("<div class='AugmentedBIM_logo'><h1>AugmentedBIM</h1></div>");
+    //function to position and size the blackout div
+    BIM.setAttributeList = function (mouseX, mouseY) {
+        //set the position of the UI relative to the viewer div
+        var targetDiv = $('.AugmentedBIM_logo');
 
+        //get upper left coordinates of the viewer div - we'll use these for positioning
+        var win = $(window);
+        var x = BIM.viewerDiv.offset().left - win.scrollLeft();
+        var y = BIM.viewerDiv.offset().top - win.scrollTop();
+        //set the position and size
+        targetDiv.css('left', x.toString() + "px");
+        targetDiv.css('top', y.toString() + "px");
+    };
 
     //////////////////////////////////////////////////////////////////////////////////
     //		Test if the browser support WebGL and getUserMedia

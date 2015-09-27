@@ -2,6 +2,13 @@
     background-color:black;
 }
 
+.AugmentedBIM_logo {
+    position: fixed;
+    z-index: 1001;
+    color: #f5f5f5;
+    padding-left:15px;
+}
+
 .AugmentedBIM_attributeList {
     height: 1px;
     
