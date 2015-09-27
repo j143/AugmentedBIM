@@ -340,11 +340,11 @@
         BIM.viewerDiv = $('canvas');
 
         //Append a div to the parent for us to populate with attributes.  handle any jquery.ui initialization here too
-        BIM.viewerDiv.append("<div class='BIMacles_attributeList'></div>");
+        $('body').append("<div class='AugmentedBIM_attributeList'></div>");
         //function to position and size the blackout div
         var setAttributeList = function () {
             //set the position of the UI relative to the viewer div
-            var targetDiv = $('.BIMacles_attributeList');
+            var targetDiv = $('.AugmentedBIM_attributeList');
 
             //get upper left coordinates of the viewer div - we'll use these for positioning
             var win = $(window);
@@ -364,7 +364,7 @@
         });
 
         //set our local variable to the div we just created
-        BIM.attributes.attributeListDiv = $('.BIMacles_attributeList');
+        BIM.attributes.attributeListDiv = $('.AugmentedBIM_attributeList');
         //make the attributes div draggable and resizeable
         //BIM.attributes.attributeListDiv.draggable({ containment: "parent" });
 
@@ -594,7 +594,7 @@
         BIM.attributes.attributeListDiv.empty();
 
         //create a header
-        BIM.attributes.attributeListDiv.append('<div class="Spectacles_attributeListHeader">Element Attributes</div>');
+        BIM.attributes.attributeListDiv.append('<div class="AugmentedBIM_attributeListHeader">Element Attributes</div>');
 
         //add an empty item for some breathing room
         BIM.attributes.attributeListDiv.append('<div class="item">-------</div>');

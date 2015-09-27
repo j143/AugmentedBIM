@@ -1,0 +1,26 @@
+﻿.AugmentedBIM_attributeList {
+    height: 1px;
+    width: 360px;
+    background-color: #fafafa;
+    font-size: 11px;
+    color: #555;
+    text-align: left;
+    position: fixed;
+    z-index: 999;
+    padding: 5px 6px;
+    display: none;
+    overflow: auto;
+    opacity: 0.85;
+}
+
+
+.AugmentedBIM_attributeList h5 {
+    display: inline;
+    color : lightslategray;;
+}
+
+.AugmentedBIM_attributeListHeader {
+    background-color: #e8e8e8;
+    font-size: 13px;
+    padding: 5px 2px;
+}
