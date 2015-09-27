@@ -321,7 +321,7 @@
         //Append a div to the parent for us to populate with attributes.  handle any jquery.ui initialization here too
         $('body').append("<div class='AugmentedBIM_attributeList'></div>");
         //function to position and size the blackout div
-        var setAttributeList = function () {
+        BIM.setAttributeList = function (mouseX, mouseY) {
             //set the position of the UI relative to the viewer div
             var targetDiv = $('.AugmentedBIM_attributeList');
 
@@ -330,16 +330,20 @@
             var x = BIM.viewerDiv.offset().left - win.scrollLeft();
             var y = BIM.viewerDiv.offset().top - win.scrollTop();
 
+            if (mouseX !== undefined) {
+                x = mouseX;
+                y = mouseY;
+            }
             //set the position and size
             targetDiv.css('left', x.toString() + "px");
             targetDiv.css('top', y.toString() + "px");
         };
         //call this the first time through
-        setAttributeList();
+        BIM.setAttributeList();
 
         //respond to resize of Parent div
         BIM.viewerDiv.resize(function () {
-            setAttributeList();
+            BIM.setAttributeList();
         });
 
         //set our local variable to the div we just created
@@ -463,6 +467,8 @@
                 else {
                     BIM.attributes.populateAttributeList(myIntersect.userData);
                 }
+
+                BIM.setAttributeList(event.clientX, event.clientY);
             }
 
             else {
@@ -572,11 +578,11 @@
         //empty the contents of the html element
         BIM.attributes.attributeListDiv.empty();
 
-        //create a header
-        BIM.attributes.attributeListDiv.append('<div class="AugmentedBIM_attributeListHeader">Element Attributes</div>');
+        ////create a header
+        //BIM.attributes.attributeListDiv.append('<div class="AugmentedBIM_attributeListHeader">Element Attributes</div>');
 
-        //add an empty item for some breathing room
-        BIM.attributes.attributeListDiv.append('<div class="item">-------</div>');
+        ////add an empty item for some breathing room
+        //BIM.attributes.attributeListDiv.append('<div class="item">-------</div>');
 
         //loop through json object attributes and create a new line for each property
         var rowCounter = 1;
@@ -602,14 +608,14 @@
         }
 
         //change height based on # rows
-        BIM.attributes.attributeListDiv.height(rowCounter * 12 + 43);
+        BIM.attributes.attributeListDiv.height(rowCounter * 12 + 21);
 
         //set the width
         if (longestString > 50) {
             BIM.attributes.attributeListDiv.width(longestString * 5 + 43);
         }
         else {
-            BIM.attributes.attributeListDiv.width(360);
+            BIM.attributes.attributeListDiv.width(200);
         }
 
         //Show the html element
