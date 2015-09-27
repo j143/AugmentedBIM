@@ -89,7 +89,7 @@
 
     // init scene and camera
     var scene = new THREE.Scene();
-    var camera = new THREE.PerspectiveCamera(40, window.innerWidth / window.innerHeight, 0.01, 1000);
+    var camera = new THREE.PerspectiveCamera(40, window.innerWidth / window.innerHeight, 0.01, 100000);
    
     camera.position.z = 2;
 
@@ -114,7 +114,7 @@
         //markerObject3D.add(mesh);
 
         var mesh2 = new THREE.AxisHelper;
-        //markerObject3D.add(mesh2);
+        markerObject3D.add(mesh2);
     })();
 
 
@@ -129,7 +129,7 @@
         var child = myScene.children[0];
         if (child instanceof THREE.Mesh) {
 
-            markerObject3D.add(child)
+            markerObject3D.add(child);
             BIM.attributes.elementList.push(child);
 
         }
