@@ -7,7 +7,7 @@ var myAugmentedBIM;
 $(document).ready(function () {
 
     //load our sample JSON file from disk
-    $.getJSON("../content/interior.json", function (data) {
+    $.getJSON("../content/interior2.json", function (data) {
 
 
         //once loaded, initialize an AugmentedBIM viewer 
