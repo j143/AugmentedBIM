@@ -108,7 +108,7 @@
     var scene = new THREE.Scene();
     var camera = new THREE.PerspectiveCamera(40, window.innerWidth / window.innerHeight, 0.01, 100000);
    
-    camera.position.z = 2;
+    camera.position.z = 70;
 
     BIM.camera = camera;
     //////////////////////////////////////////////////////////////////////////////////
