@@ -9,6 +9,7 @@ $(document).ready(function () {
     //load our sample JSON file from disk
     $.getJSON("../content/mobius.json", function (data) {
 
+
         //once loaded, initialize an AugmentedBIM viewer 
         myAugmentedBIM = new AugmentedBIM(data, function (app) {
 
